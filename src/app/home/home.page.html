@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Home
+    </ion-title>
+    <!-- icon hamburger side menu -->
+    <ion-button slot="start"> 
+      <ion-menu-button menu="main-menu"><ion-icon name="menu"></ion-icon></ion-menu-button>
+    </ion-button>
+  </ion-toolbar>
+  <ion-toolbar>
+    <div class="scroll" scrollX="true">
+      <span>
+        <ion-card color="light" padding (click)="listAllBerita()" button="true"> 
+          <ion-card-content>
+          All
+          </ion-card-content>
+        </ion-card>
+      </span>
+      <span *ngFor="let tag of tagList">
+        <ion-card color="light" padding (click)="filterByTagID(tag.tagID)" button="true"> 
+          <ion-card-content>
+            {{tag.tagName}}
+          </ion-card-content>
+        </ion-card>
+      </span>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list>
+      <ion-item *ngFor="let berita of beritaList">
+        <ion-item (click)="goToBerita(berita.id)">
+          <ion-card button="false">
+            <ion-card-header>
+              <ion-card-subtitle>{{berita.uploadDate.toDate()}}</ion-card-subtitle>
+              <ion-card-title>{{berita.judul}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>Reporter: {{berita.uploader}}</p>
+              <p>Editor: {{berita.editor}}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+        <ion-item-options side="start">
+          <!-- <ion-item-option (click)="favorite(item)">Favorite</ion-item-option> -->
+          <!-- <ion-item-option color="primary" (click)="share(item)">Share</ion-item-option> -->
+        </ion-item-options>
+    
+        <ion-item-options side="end">
+          <!-- <ion-item-option (click)="unread(item)">Unread</ion-item-option> -->
+        </ion-item-options>
+      </ion-item>
+    </ion-list>
+  </ion-list>
+</ion-content>

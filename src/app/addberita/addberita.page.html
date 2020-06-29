@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home">
+        <ion-icon name="home-outline" slot="icon-only"></ion-icon>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>addNews</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+  <ion-label >Masukkan Nama editor:</ion-label>
+  <ion-input placeholder="Nama Editor" [(ngModel)]="namaeditor"></ion-input>
+  <ion-label >Masukkan Judul :</ion-label>
+  <ion-input type="text" placeholder="ketik judul disini" [(ngModel)]="judulberita"></ion-input>
+  <ion-label >Masukkan isi :</ion-label>
+  <ion-textarea placeholder="isi berita disini..." [(ngModel)]="isiberita"></ion-textarea>
+  
+  <ion-item>
+      <ion-label>
+        <ion-item>
+          <ion-label>Tag</ion-label>
+          <ion-select multiple="true" placeholder="Pilih tag..." name="tagSelected" [(ngModel)]="tagberita">
+            <ion-select-option *ngFor="let tag of tagList" [value]="tag.tagberita">{{tag.tagName}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-label>
+    </ion-item>
+
+  <div class="ion-text-end ion-margin">
+    <ion-button (click)="simpandata()">Save</ion-button>
+  </div>
+  
+</ion-content>

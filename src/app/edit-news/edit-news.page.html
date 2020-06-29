@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home">
+        <ion-icon name="home-outline" slot="icon-only"></ion-icon>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>editNews</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="saveEdit()">
+    <ion-item>
+      <ion-label>Judul Berita</ion-label>
+      <ion-input type="text" placeholder="judul berita" [(ngModel)]="beritaRead.judul" required name="judul"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Isi berita</ion-label>
+      <ion-input type="text" placeholder="judul berita" [(ngModel)]="beritaRead.isi" required name="isi"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <ion-item>
+          <ion-label>Tag</ion-label>
+          <ion-select multiple="true" placeholder="Pilih tag..." name="tagSelected" [(ngModel)]="beritaRead.tagID">
+            <ion-select-option *ngFor="let tag of tagList" [value]="tag.tagID">{{tag.tagName}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-label>
+    </ion-item>
+    <div linespace></div><br>
+    <ion-button type="submit" fill="outline" [disabled]="!form.valid">
+      <ion-icon slot="start" name="save-outline"></ion-icon>
+      Save
+    </ion-button>
+    <ion-button (click)="discard()" fill="outline" color="danger">
+      <ion-icon slot="start" name="trash-outline"></ion-icon>
+      Discard
+    </ion-button>
+  </form>
+</ion-content>

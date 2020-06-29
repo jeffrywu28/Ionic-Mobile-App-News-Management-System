@@ -1,0 +1,24 @@
+<!-- Sidebar menu -->
+<ion-app> 
+<ion-menu side="start" menuId="main-menu" contentId="main">
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list *ngIf="ifLogin(); else logsign">
+      <ion-item routerLink="/welcome">Profile</ion-item>
+      <ion-item routerLink="/home">Home</ion-item>
+      <ion-item (click)="logout()" button="true">Log Out</ion-item>
+    </ion-list>
+    <ng-template #logsign>
+    <ion-list>
+      <ion-item routerLink="/login">Login</ion-item>
+      <ion-item routerLink="/signup">Sign Up</ion-item>
+    </ion-list>
+  </ng-template>
+  </ion-content>
+</ion-menu>
+<ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>

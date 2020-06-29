@@ -1,0 +1,60 @@
+.login-header{
+    background: #2F455C;;
+    position: relative;
+    border-radius: 0em;
+}
+.login-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-top-color: #2F455C;
+    border-bottom: 0;
+    margin-left: -15px;
+    margin-bottom: -15px;
+
+}
+
+.logo-img{
+    display: block;
+    width: 120px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+[heading-column-1r]{
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+[big-heading] {
+    font-family: 'Segoe UI' !important;
+    font-size: 30px !important;
+}
+[transparent]{
+    --background: transparent;
+}
+ion-input {
+    --padding-bottom: 15px;
+    --padding-top: 15px;
+    --padding-start: 15px;
+    font-size: 15px;
+    text-indent: 1px;
+    padding-left: 10px !important;
+}
+[linespace]{
+    width: 30px;
+}
+ion-label {
+    opacity: .8;
+    font-size: 13px;
+    display: block;
+}
+
+ion-button-class {
+    font-family: 'Segoe UI' !important;
+}

@@ -1,0 +1,28 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-button slot="start" color="transparent">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-button>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+  <div class="login-header ion-padding">
+    <img class="logo-img" src="assets/img/ionic.png">
+  </div>
+</ion-header>
+
+<ion-content>
+  <div heading-column-1r>
+    <h1 big-heading>Login</h1>
+  </div>
+  <ion-item transparent>
+    <ion-icon name="person-circle-outline"></ion-icon>
+    <ion-input [(ngModel)]="user" placeholder="email" type="text"></ion-input>
+  </ion-item>
+  <ion-item transparent>
+    <ion-icon name="finger-print-outline"></ion-icon>
+    <ion-input [(ngModel)]="password" placeholder="password" type="password"></ion-input>
+  </ion-item>
+  <div linespace></div><br>
+  <ion-button color="primary" class="ion-button-class" shape="round" fill="solid" size="large" expand="block" (click)="login()">Login</ion-button><br>
+  <ion-label>Dont Have Account? <span class="link-button" routerLink="/signup">Sign Up</span></ion-label>
+</ion-content>

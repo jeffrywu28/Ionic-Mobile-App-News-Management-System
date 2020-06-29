@@ -1,0 +1,37 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-button slot="start" color="transparent">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-button>
+    <ion-title>Mendaftar</ion-title>
+  </ion-toolbar>
+  <div class="login-header ion-padding">
+    <img class="logo-img" src="assets/img/ionic.png">
+  </div>
+</ion-header>
+
+<ion-content>
+  <div heading-column-1r>
+    <h1 big-heading>Sign Up</h1>
+  </div>
+  <form #form="ngForm" (ngSubmit)="signup()">
+    <ion-item transparent>
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-input [(ngModel)]="user" name="user" placeholder="email anda" type="text" required></ion-input>
+    </ion-item>
+    <ion-item transparent>
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-input [(ngModel)]="username" name="username" placeholder="Nama anda" type="text" required></ion-input>
+    </ion-item>
+    <ion-item transparent>
+      <ion-icon name="finger-print-outline"></ion-icon>
+      <ion-input [(ngModel)]="password" name="password" required pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" placeholder="password (min. 8 character,1 letter,1 number,1 special char)" type="password" required minlength="8"></ion-input>
+    </ion-item>
+    <div linespace></div><br>
+    <ion-button (click)="clearForm()" color="danger" shape="round" fill="outline" size="large" expand="block">
+      Clear
+    </ion-button>
+    <ion-button color="primary" class="ion-button-class" shape="round" fill="outline" size="large" expand="block" type="submit" [disabled]="!form.valid">Sign Up</ion-button><br>
+  </form>
+  <ion-label>Already Have an Account? <span class="link-button" routerLink="/login">Login</span></ion-label>
+</ion-content>

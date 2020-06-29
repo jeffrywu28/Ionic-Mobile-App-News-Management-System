@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start">
+      <ion-menu-button menu="main-menu"><ion-icon name="menu"></ion-icon></ion-menu-button>
+    </ion-button>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <div class="scroll" scrollX="true">
+      <span>
+        <ion-card color="light" padding (click)="addBerita()" button="true">
+          <ion-card-content>
+            Add Berita
+          </ion-card-content>
+        </ion-card>
+      </span>
+      <span>
+        <ion-card color="light" padding (click)="listAllBerita()" button="true">
+          <ion-card-content>
+            Semua Berita
+          </ion-card-content>
+        </ion-card>
+      </span>
+      <span *ngFor="let tag of tagList">
+        <ion-card color="light" padding (click)="filterByTagID(tag.tagID)" button="true">
+          <ion-card-content>
+            {{tag.tagName}}
+          </ion-card-content>
+        </ion-card>
+      </span>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-text-center">
+    <h4>Welcome, {{(userObservable|async)?.username}}</h4>
+    <p>
+      You are currently 
+      <ng-container *ngIf="(userObservable|async)?.role==0">
+        a reader
+      </ng-container>
+      <ng-container *ngIf="(userObservable|async)?.role==1">
+        a reporter
+      </ng-container>
+      <ng-container *ngIf="(userObservable|async)?.role==2">
+        an editor
+      </ng-container>
+    </p>
+  </div>
+  <br>
+  <ion-row>
+    <ion-col width-50 style="text-align: center;">
+      <ion-button class="ion-align-items-center" color="warning" fill="outline" routerLink="/home">
+        Go to Home {{tdelete}}
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col width-50 style="text-align: center;">
+      <ion-button class="ion-align-items-center" color="secondary" expand="full" (click)="showNews()">
+        <div *ngIf="show == false">
+          Show News 
+        </div>
+        <div *ngIf="show == true">
+          Hide News
+        </div>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  
+  <ion-list>
+    <ion-list *ngIf="show == true">
+      <ion-item-sliding *ngFor="let berita of beritaList">
+        <ion-item (click)="goToBerita(berita.id)">
+          <ion-card button="false">
+            <ion-card-header>
+              <ion-card-subtitle>{{berita.uploadDate.toDate()}}</ion-card-subtitle>
+              <ion-card-title>{{berita.judul}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>Reporter: {{berita.uploader}}</p>
+              <p>Editor: {{berita.editor}}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+        <ion-item-options side="start">
+          <!-- <ion-item-option (click)="favorite(item)">Favorite</ion-item-option> -->
+          <!-- <ion-item-option color="primary" (click)="share(item)">Share</ion-item-option> -->
+          <ion-item-option color="primary" (click)="gotoEdit(berita.id)">
+            <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+
+        <ion-item-options side="end">
+          <!-- <ion-item-option (click)="unread(item)">Unread</ion-item-option> -->
+          <ion-item-option color="danger" (click)="gotoDelete(berita.id)">
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-list>
+</ion-content>
